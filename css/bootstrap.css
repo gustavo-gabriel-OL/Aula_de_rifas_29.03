@@ -167,6 +167,18 @@ a {
   -webkit-text-decoration-skip: objects;
 }
 
+a:link {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+
 a:hover {
   color: #0056b3;
   text-decoration: underline;
