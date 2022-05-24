@@ -1,5 +1,5 @@
-$(document).ready(function(){
-    $('.btn-new').click(function(e){
+$(document).ready(function() {
+    $('.btn-new').click(function(e) {
         e.preventDefault()
 
         $('.modal-title').empty()
@@ -14,7 +14,5 @@ $(document).ready(function(){
         $('.btn-save').attr('data-operation', 'insert')
 
         $('#modal-tipo').modal('show')
-
-
     })
 })

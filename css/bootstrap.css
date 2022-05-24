@@ -4,7 +4,6 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -166,16 +165,6 @@ a {
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
-}
-
-#macaco{
-  color: rgb(255, 255, 255);
-}
-
-a:visited {
-  color: rgb(255, 255, 255);
-  background-color: transparent;
-  text-decoration: none;
 }
 
 a:hover {

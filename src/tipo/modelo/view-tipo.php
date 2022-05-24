@@ -1,33 +1,34 @@
 <?php
-//inclusão do BD
-include('../../conexao/conn.php');
 
-//executo a recepção do id a ser buscado no banco
-$ID = $_REQUEST['ID'];
+    // Inclusão do banco de dados
+    include('../../conexao/conn.php');
 
-//gero a query de consulta no BD
-$sql = "SELECT * FROM TIPO WHERE ID = $ID";
+    // Executo a recepção do id a ser buscado no banco de dados
+    $ID = $_REQUEST['ID'];
 
-//executar nossa query de consulta ao BD
-$resultado = $pdo->query($sql);
+    // Gero a querie de consulta no banco de dados
+    $sql = "SELECT * FROM TIPO WHERE ID = $ID";
 
-//testar a minha consulta de BD
-if($resultado){
-    $dadosEixo = array();
-    while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-        $dadosEixo = array_map('utf8_encode', $row);
+    // Executar nossa querie de consulta ao banco de dados
+    $resultado = $pdo->query($sql);
+
+    // Testar a minha consulta de banco de dados
+    if($resultado){
+        $dadosEixo = array();
+        while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+            $dadosEixo = array_map('utf8_encode', $row);
+        }
+        $dados = array(
+            'tipo' => 'success',
+            'mensagem' => '',
+            'dados' => $dadosEixo
+        );
+    } else {
+        $dados = array(
+            'tipo' => 'error',
+            'mensagem' => 'Não foi possível obter o registro solicitado.',
+            'dados' => array()
+        );
     }
-    $dados = array(
-        'tipo' => 'success',
-        'mensagem' => '',
-        'dados' => $dadosEixo
-    );
-} else{
-    $dados = array(
-        'tipo' => 'error',
-        'mensagem' => 'Não foi possível obter o registro solicitado.',
-        'dados' => array()
-    );
-}
 
-echo json_encode($dados);
+    echo json_encode($dados);

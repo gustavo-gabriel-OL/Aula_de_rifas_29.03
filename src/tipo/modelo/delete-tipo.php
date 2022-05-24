@@ -1,27 +1,28 @@
 <?php
-//inclusão do BD
-include('../../conexao/conn.php');
 
-//coleta do id a ser excluído no banco de dados que esstá sendo enviado pelo FORM
-$ID = $_REQUEST['ID'];
+    // Instância do banco de dados
+    include("../../conexao/conn.php");
 
-//gero a query para interação com o BD
-$sql = "DELETE FROM TIPO WHERE ID = $ID";
+    // Coleta do ID que será excluído do nosso banco de dados que está sendo enviado pelo FORM
+    $ID = $_REQUEST['ID'];
 
-//executar nossa query 
-$resultado = $pdo->query($sql);
+    // Criar a nossa querie para interação com o banco de dados
+    $sql = "DELETE FROM TIPO WHERE ID = $ID";
 
-//testar o retorno do resultado da nossa query
-if($resultado){
-    $dados = array(
-        'tipo' => 'success',
-        'mensagem' => 'Registro excluído com sucesso!'
-    );
-} else{
-    $dados = array(
-        'tipo' => 'error',
-        'mensagem' => 'Não foi possível excluir o registro.',
-    );
-}
+    // Executar a nossa querie
+    $resultado = $pdo->query($sql);
 
-echo json_encode($dados);
+    // Testaremos o retorno do resultado da nossa querie
+    if($resultado){
+        $dados = array(
+            'tipo' => 'success',
+            'mensagem' => 'Registro excluído com sucesso!'
+        );
+    } else {
+        $dados = array(
+            'tipo' => 'error',
+            'mensagem' => 'Não foi possível excluir o registro'
+        );
+    }
+
+    echo json_encode($dados);
