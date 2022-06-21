@@ -21,7 +21,7 @@
     if( !empty( $filtro ) ){
         //Montar a expressão lógica que irá compor os filtros
         //Aqui você deverá determinar quais colunas farão parte do filtro
-        $sql .= " AND (ID LIKE '$filtro%' ";
+        $sql .= " AND (ID LIKE '$filtro%') ";
         $sql .= " OR NOME LIKE '$filtro%') ";
         $sql .= " OR CELULAR LIKE '$filtro%') ";
     }
