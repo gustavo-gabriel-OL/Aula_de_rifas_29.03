@@ -21,7 +21,7 @@ $(document).ready(function() {
             url: 'src/vendedor/model/view-vendedor.php',
             success: function(dado) {
                 if (dado.tipo == "success") {
-                    $('.modal-body').load('src/vendedor/view/form-vendedor.html', function() {
+                    $('.modal-body').load('src/vendedor/visao/form-vendedor.html', function() {
                         $('#NOME').val(dado.dados.NOME)
                         $('#CELULAR').val(dado.dados.CELULAR)
                         $('#LOGIN').val(dado.dados.LOGIN)
