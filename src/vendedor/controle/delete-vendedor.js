@@ -21,7 +21,7 @@ $(document).ready(function() {
                     dataType: 'json',
                     assync: true,
                     data: ID,
-                    url: 'src/vendedor/model/delete-vendedor.php',
+                    url: 'src/vendedor/modelo/delete-vendedor.php',
                     success: function(dados) {
                         Swal.fire({
                             title: 'Sistema de Rifas',
