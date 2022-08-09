@@ -6,7 +6,7 @@
     // $password "g23VzpiKkzp8Ae8";
 
     $hostname = "localhost";
-    $dbname = "rifas";
+    $dbname = "rifa";
     $username = "root";
     $password = "";
 
