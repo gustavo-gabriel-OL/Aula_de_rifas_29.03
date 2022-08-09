@@ -39,7 +39,7 @@ $(document).ready(function() {
                             dataType: 'json',
                             type: 'POST',
                             assync: true,
-                            url: 'src/tipo/model/all-tipo.php',
+                            url: 'src/tipo/modelo/all-tipo.php',
                             success: function(dados) {
                                 for (const result of dados) {
                                     if (result.ID == TIPO_ID) {
