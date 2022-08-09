@@ -16,7 +16,7 @@ $(document).ready(function() {
             url: 'src/vendedor/modelo/save-vendedor.php',
             success: function(dados) {
                 Swal.fire({
-                    title: 'e-rifa',
+                    title: 'Rifadástico',
                     text: dados.mensagem,
                     icon: dados.tipo,
                     confirmButtonText: 'OK'

@@ -29,7 +29,7 @@ $(document).ready(function() {
                     $('#modal-comprador').modal('show')
                 } else {
                     Swal.fire({
-                        title: 'TOP-RIFAS',
+                        title: 'Rifadástico',
                         text: dado.mensagem,
                         type: dado.tipo,
                         confirmButtonText: 'OK'

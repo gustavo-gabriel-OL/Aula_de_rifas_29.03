@@ -15,7 +15,7 @@ $(document).ready(function() {
             url: 'src/comprador/modelo/save-comprador.php',
             success: function(dados) {
                 Swal.fire({
-                    title: 'TOP-RIFAS',
+                    title: 'Rifadástico',
                     text: dados.mensagem,
                     icon: dados.tipo,
                     confirmButtonText: 'OK'

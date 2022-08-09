@@ -24,7 +24,7 @@ $(document).ready(function() {
                     url: 'src/vendedor/modelo/delete-vendedor.php',
                     success: function(dados) {
                         Swal.fire({
-                            title: 'Sistema de Rifas',
+                            title: 'Rifadástico',
                             text: dados.mensagem,
                             icon: dados.tipo,
                             confirmButtonText: 'OK'
