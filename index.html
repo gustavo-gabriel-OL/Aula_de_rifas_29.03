@@ -8,6 +8,7 @@
     <title>Sistema Gerenciamento de Rifas</title>
     <link rel="shortcut icon" href="img/ticket.png" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="libs/sweetAlert/dist/sweetalert2.css">
 </head>
 
 <body>
@@ -19,18 +20,18 @@
                     <img class="img-fluid" src="img/ticket.png" alt="e-rifas">
                     <div class="card-body">
                         <h5 class="card-title">Login do sistema</h5>
-                        <form>
+                        <form id="form-login">
                             <div class="form-group">
                                 <label>Login</label>
-                                <input type="text" name="" id="" class="form-control">
+                                <input type="text" name="LOGIN" id="LOGIN" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Senha</label>
-                                <input type="password" name="" id="" class="form-control">
+                                <input type="password" name="SENHA" id="SENHA" class="form-control">
                             </div>
                             <div class="form-group row justify-content-end">
                                 <div class="col-12 col-sm-8 col-md-6">
-                                    <button class="btn btn-warning btn-block">Entrar</button>
+                                    <button class="btn btn-warning btn-block btn-login">Entrar</button>
                                 </div>
                             </div>
                         </form>
@@ -42,6 +43,8 @@
 
     <script src="js/jquery-3.6.0.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="libs/sweetAlert/dist/sweetalert2.all.js"></script>
+    <script src="src/vendedor/controle/login-vendedor.js"></script>
 </body>
 
 </html>
