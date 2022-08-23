@@ -2,8 +2,6 @@
 
     session_start();
 
-    echo $_SESSION['NOME'];
-
     if(!isset($_SESSION['NOME']) && !isset($_SESSION['TIPO'])){
 
         $dados = array(
@@ -14,7 +12,7 @@
     }else{
         $dados = array(
             'tipo' => 'success',
-            'mensagem' => 'Seja bem vindo'.$_SESSION ['NOME']
+            'mensagem' => 'Seja bem vindo ' .$_SESSION ['NOME']
         );
     }
 
