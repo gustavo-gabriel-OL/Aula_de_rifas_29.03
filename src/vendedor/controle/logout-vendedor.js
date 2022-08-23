@@ -9,7 +9,6 @@ $(document).ready(function() {
             assync: true,
             url: 'src/vendedor/modelo/logout-vendedor.php',
             success: function(dados) {
-
                 if(dados.tipo == 'success'){
                     $(location).attr('href', 'index.html')
                 }else{

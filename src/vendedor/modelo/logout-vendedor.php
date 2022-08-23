@@ -6,7 +6,7 @@
 
     $dados = array(
         'tipo' => 'success',
-        'mesangem' => 'Sessão encerrada.'
+        'mensagem' => 'Sessão encerrada.'
     );
 
     echo json_decode($dados);
