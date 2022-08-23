@@ -9,8 +9,8 @@ SENHA ='".md5($_REQUEST['SENHA'])."'");
 while ($resultado = $sql->fetch(PDO::FETCH_ASSOC)) {
     if($resultado['achou'] == 1){
         session_start();
-        $SESSION['NOME'] = $resultado ['NOME'];
-        $SESSION['TIPO'] = $resultado ['TIPO_ID'];
+        $_SESSION['NOME'] = $resultado ['NOME'];
+        $_SESSION['TIPO'] = $resultado ['TIPO_ID'];
         $dados = array(
             'tipo' => 'success',
             'mensagem' => 'Login correto.'
