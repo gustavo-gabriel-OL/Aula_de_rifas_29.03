@@ -14,9 +14,9 @@
     $filtro = $requestData['search']['value'];
     if( !empty( $filtro ) ){
 
-        $sql .= " AND (ID LIKE '$filtro%' ";
-        $sql .= " OR NOME LIKE '$filtro%' ";
-        $sql .= " OR CELULAR LIKE '$filtro%') ";
+        $sql .= " AND (ID LIKE '%$filtro%' ";
+        $sql .= " OR NOME LIKE '%$filtro%' ";
+        $sql .= " OR CELULAR LIKE '%$filtro%') ";
     }
     
     $resultado = $pdo->query($sql);

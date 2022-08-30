@@ -4,43 +4,61 @@ include('../../conexao/conn.php');
 
 $requestData = $_REQUEST;
 
-$colunas = $requestData['columns'];
+if(empty($requestData['TITULO'])){
+    $dados = array(
+        "tipo" => 'error',
+        "mensagem" => 'Existe(m) campo(s) obrigatório(s) não preenchido(s).'
+    );
+} else {
+    $ID = isset($requestData['ID']) ? $requestData['ID'] : '';
+    $operacao = isset($requestData['operacao']) ? $requestData['operacao'] : '';
 
-$sql = "SELECT ID, TITULO, VALOR_RIFA FROM PROMOCAO WHERE 1=1 ";
-
-$resultado = $pdo->query($sql);
-$qldeLinhas = $resultado->rowCount();
-
-$filtro = $requestData['search']['value'];
-if( !empty( $filtro ) ){
-    $sql .= " AND (ID LIKE '$filtro%' ";
-    $sql .= " OR TITULO LIKE '$filtro%') ";
-    $sql .= " OR VALOR_RIFA LIKE '$filtro%') ";
+    if($operacao == 'insert'){
+        try{
+            $stmt = $pdo->prepare('INSERT INTO PROMOCAO (TITULO, DESCRICAO, DATA_INICIO, DATA_FIM, DATA_SORTEIO, VALOR_RIFA) VALUES (:a, :b, :c, :d, :e, :f)');
+            $stmt->execute(array(
+                // ':a' => utf8_decode($requestData['TITULO'])
+                ':a' => $requestData['TITULO'],
+                ':b' => $requestData['DESCRICAO'],
+                ':c' => $requestData['DATA_INICIO'],
+                ':d' => $requestData['DATA_FIM'],
+                ':e' => $requestData['DATA_SORTEIO'],
+                ':f' => $requestData['VALOR_RIFA']
+            ));
+            $dados = array(
+                "tipo" => 'success',
+                "mensagem" => 'Registro salvo com sucesso.'
+            );
+        } catch(PDOException $e) {
+            $dados = array(
+                "tipo" => 'error',
+                "mensagem" => 'Não foi possível efetuar o cadastro do curso.'
+            );
+        }
+    } else {
+        try{
+            $stmt = $pdo->prepare('UPDATE PROMOCAO SET TITULO = :a, DESCRICAO = :b, DATA_INICIO = :c, DATA_FIM = :d, DATA_SORTEIO = :e, VALOR_RIFA = :f WHERE ID = :id');
+            $stmt->execute(array(
+                ':id' => $ID,
+                // ':a' => utf8_decode($requestData['TITULO'])
+                ':a' => $requestData['TITULO'],
+                ':b' => $requestData['DESCRICAO'],
+                ':c' => $requestData['DATA_INICIO'],
+                ':d' => $requestData['DATA_FIM'],
+                ':e' => $requestData['DATA_SORTEIO'],
+                ':f' => $requestData['VALOR_RIFA']
+            ));
+            $dados = array(
+                "tipo" => 'success',
+                "mensagem" => 'Registro atualizado com sucesso.'
+            );
+        } catch (PDOException $e){
+            $dados = array(
+                "tipo" => 'error',
+                "mensagem" => 'Não foi possível efetuar a alteração do registro.'
+            );
+        }
+    }
 }
 
-$resultado = $pdo->query($sql);
-$totalFiltrados = $resultado->rowCount();
-
-$colunaOrdem = $requestData['order'][0]['column'];
-$ordem = $colunas[$colunaOrdem]['data'];
-$direcao = $requestData['order'][0]['dir'];
-
-$inicio = $requestData['start'];
-$tamanho = $requestData['length'];
-
-$sql .= " ORDER BY $ordem $direcao LIMIT $inicio, $tamanho ";
-$resultado = $pdo->query($sql);
-$dados = array();
-while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-    //$dados[] = array_map('utf8_encode', $row);
-    $dados[] = array_map(null, $row);
-}
-
-$json_data = array(
-    "draw" => intval($requestData['draw']),
-    "recordsTotal" => intval($qldeLinhas),
-    "recordsFiltered" => intval($totalFiltrados),
-    "data" => $dados 
-);
-
-echo json_encode($json_data);
+    echo json_encode($dados);

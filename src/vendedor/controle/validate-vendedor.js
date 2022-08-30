@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $.ajax({
+        $.ajax({
             type: 'POST',
             dataType: 'json',
             assync: true,
@@ -9,13 +9,12 @@ $(document).ready(function() {
                     $(location).attr('href', 'index.html')
                 }else{
                 Swal.fire({
-                    title: 'Rifadástico',
+                    title: 'e-rifa',
                     text: dados.mensagem,
                     icon: dados.tipo,
                     confirmButtonText: 'OK'
                 })
-
-              }
             }
-        })
+        } 
     })
+})

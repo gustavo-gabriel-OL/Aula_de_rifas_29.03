@@ -1,46 +1,35 @@
 <?php
 
-include('../../conexao/conn.php');
+    // Inclusão do banco de dados
+    include('../../conexao/conn.php');
 
-$requestData = $_REQUEST;
+    // Executo a recepção do id a ser buscado no banco de dados
+    $ID = $_REQUEST['ID'];
 
-$colunas = $requestData['columns'];
+    // Gero a querie de consulta no banco de dados
+    $sql = "SELECT * FROM PROMOCAO WHERE ID = $ID";
 
-$sql = "SELECT ID, TITULO, VALOR_RIFA FROM PROMOCAO WHERE 1=1 ";
+    // Executar nossa querie de consulta ao banco de dados
+    $resultado = $pdo->query($sql);
 
-$resultado = $pdo->query($sql);
-$qldeLinhas = $resultado->rowCount();
+    // Testar a minha consulta de banco de dados
+    if($resultado){
+        $result = array();
+        while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+            //$result = array_map('utf8_encode', $row);
+            $result = array_map(null, $row);
+        }
+        $dados = array(
+            'tipo' => 'success',
+            'mensagem' => '',
+            'dados' => $result
+        );
+    } else {
+        $dados = array(
+            'tipo' => 'error',
+            'mensagem' => 'Não foi possível obter o registro solicitado.',
+            'dados' => array()
+        );
+    }
 
-$filtro = $requestData['search']['value'];
-if( !empty( $filtro ) ){
-    $sql .= " AND (ID LIKE '$filtro%' ";
-    $sql .= " OR TITULO LIKE '$filtro%') ";
-    $sql .= " OR VALOR_RIFA LIKE '$filtro%') ";
-}
-
-$resultado = $pdo->query($sql);
-$totalFiltrados = $resultado->rowCount();
-
-$colunaOrdem = $requestData['order'][0]['column'];
-$ordem = $colunas[$colunaOrdem]['data'];
-$direcao = $requestData['order'][0]['dir'];
-
-$inicio = $requestData['start'];
-$tamanho = $requestData['length'];
-
-$sql .= " ORDER BY $ordem $direcao LIMIT $inicio, $tamanho ";
-$resultado = $pdo->query($sql);
-$dados = array();
-while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-    //$dados[] = array_map('utf8_encode', $row);
-    $dados[] = array_map(null, $row);
-}
-
-$json_data = array(
-    "draw" => intval($requestData['draw']),
-    "recordsTotal" => intval($qldeLinhas),
-    "recordsFiltered" => intval($totalFiltrados),
-    "data" => $dados 
-);
-
-echo json_encode($json_data);
+    echo json_encode($dados);

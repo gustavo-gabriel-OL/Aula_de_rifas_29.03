@@ -33,7 +33,7 @@ $(document).ready(function() {
                     $('#modal-promocao').modal('show')
                 } else {
                     Swal.fire({
-                        title: 'Rifadástico',
+                        title: 'TOP-RIFAS',
                         text: dado.mensagem,
                         type: dado.tipo,
                         confirmButtonText: 'OK'

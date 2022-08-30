@@ -4,6 +4,8 @@ $(document).ready(function() {
 
         e.preventDefault()
 
+        // Alterar as informações do modal para apresentação dos dados
+
         $('.modal-title').empty()
         $('.modal-body').empty()
 
@@ -21,17 +23,17 @@ $(document).ready(function() {
                 if (dado.tipo == "success") {
                     $('.modal-body').load('src/comprador/visao/form-comprador.html', function() {
                         $('#NOME').val(dado.dados.NOME)
-                        $('#CELULAR').val(dado.dados.CELULAR)
                         $('#ID').val(dado.dados.ID)
+                        $('#CELULAR').val(dado.dados.CELULAR)
                     })
                     $('.btn-save').removeAttr('data-operation', 'insert')
                     $('.btn-save').show()
                     $('#modal-comprador').modal('show')
                 } else {
-                    Swal.fire({
-                        title: 'Rifadástico',
-                        text: dado.mensagem,
-                        type: dado.tipo,
+                    Swal.fire({ // Inicialização do SweetAlert
+                        title: 'e-Rifa', // Título da janela SweetAler
+                        text: dado.mensagem, // Mensagem retornada do microserviço
+                        type: dado.tipo, // Tipo de retorno [success, info ou error]
                         confirmButtonText: 'OK'
                     })
                 }

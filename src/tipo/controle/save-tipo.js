@@ -15,7 +15,7 @@ $(document).ready(function() {
             url: 'src/tipo/modelo/save-tipo.php',
             success: function(dados) {
                 Swal.fire({
-                    title: 'Rifadástico',
+                    title: 'e-Rifa',
                     text: dados.mensagem,
                     icon: dados.tipo,
                     confirmButtonText: 'OK'

@@ -18,7 +18,7 @@ $(document).ready(function() {
             dataType: 'json',
             assync: true,
             data: ID,
-            url: 'src/vendedor/model/view-vendedor.php',
+            url: 'src/vendedor/modelo/view-vendedor.php',
             success: function(dado) {
                 if (dado.tipo == "success") {
                     $('.modal-body').load('src/vendedor/visao/form-vendedor.html', function() {
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
                         var TIPO_ID = dado.dados.TIPO_ID
 
-                        //Consultar todos os tipos cadastrados no banco de dados
+                        //Consultar todos os tipos cadastrados no banco de daods
                         $.ajax({
                             dataType: 'json',
                             type: 'POST',
