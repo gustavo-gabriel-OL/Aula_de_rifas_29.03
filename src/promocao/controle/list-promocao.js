@@ -22,6 +22,10 @@ $(document).ready(function() {
                 "className": 'text-center'
             },
             {
+                "data": 'ARRECADACAO',
+                "className": 'text-center'
+            },
+            {
                 "data": 'ID',
                 "orderable": false,
                 "searchable": false,

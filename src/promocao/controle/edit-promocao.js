@@ -25,6 +25,7 @@ $(document).ready(function() {
                         $('#DATA_INICIO').val(dado.dados.DATA_INICIO)
                         $('#DATA_FIM').val(dado.dados.DATA_FIM)
                         $('#DATA_SORTEIO').val(dado.dados.DATA_SORTEIO)
+                        $('#ARRECADACAO').val(dado.dados.ARRECADACAO)
                         $('#VALOR_RIFA').val(dado.dados.VALOR_RIFA)
                         $('#ID').val(dado.dados.ID)
                     })

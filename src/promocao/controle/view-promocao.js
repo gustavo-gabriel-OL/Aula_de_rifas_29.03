@@ -33,6 +33,8 @@ $(document).ready(function() {
                         $('#DATA_SORTEIO').attr('readonly', 'true')
                         $('#VALOR_RIFA').val(dado.dados.VALOR_RIFA)
                         $('#VALOR_RIFA').attr('readonly', 'true')
+                        $('#ARRECADACAO').val(dado.dados.ARRECADACAO)
+                        $('#ARRECADACAO').attr('readonly', 'true')
                     })
                     $('.btn-save').hide()
                     $('#modal-promocao').modal('show')
