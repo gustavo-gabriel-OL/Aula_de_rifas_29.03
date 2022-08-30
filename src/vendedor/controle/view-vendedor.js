@@ -55,7 +55,7 @@ $(document).ready(function() {
                     $('#modal-vendedor').modal('show')
                 } else {
                     Swal.fire({ // Inicialização do SweetAlert
-                        title: 'e-Rifa', // Título da janela SweetAler
+                        title: 'Rifadástico', // Título da janela SweetAler
                         text: dado.mensagem, // Mensagem retornada do microserviço
                         type: dado.tipo, // vendedor de retorno [success, info ou error]
                         confirmButtonText: 'OK'

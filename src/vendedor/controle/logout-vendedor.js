@@ -13,7 +13,7 @@ $(document).ready(function() {
                     $(location).attr('href', 'index.html')
                 } else{
                     Swal.fire({
-                        title: 'e-rifa',
+                        title: 'Rifadástico',
                         text: dados.mensagem,
                         icon: dados.tipo,
                         confirmButtonText: 'OK'

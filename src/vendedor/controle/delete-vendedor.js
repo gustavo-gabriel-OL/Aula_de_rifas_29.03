@@ -7,7 +7,7 @@ $(document).ready(function() {
         let ID = `ID=${$(this).attr('id')}`
 
         Swal.fire({
-            title: 'Sistema de rifas',
+            title: 'Rifadástico',
             text: "Deseja realmente excluir esse registro?",
             icon: 'question',
             showCancelButton: true,
@@ -24,7 +24,7 @@ $(document).ready(function() {
                     url: 'src/vendedor/modelo/delete-vendedor.php',
                     success: function(dados) {
                         Swal.fire({
-                            title: 'Sistema de Rifas',
+                            title: 'Rifadástico',
                             text: dados.mensagem,
                             icon: dados.tipo,
                             confirmButtonText: 'OK'
