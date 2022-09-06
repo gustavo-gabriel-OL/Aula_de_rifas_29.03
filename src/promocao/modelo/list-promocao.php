@@ -15,7 +15,7 @@ $filtro = $requestData['search']['value'];
 if( !empty( $filtro ) ){
     $sql .= " AND (ID LIKE '$filtro%' ";
     $sql .= " OR TITULO LIKE '$filtro%') ";
-    $sql .= " OR VALOR_RIFA LIKE '$filtro%') ";
+    $sql .= " OR DATA_SORTEIO LIKE '$filtro%') ";
     $sql .= " OR ARRECADACAO LIKE '$filtro%') ";
 }
 
